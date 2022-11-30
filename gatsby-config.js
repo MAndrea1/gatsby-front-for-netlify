@@ -8,5 +8,12 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `http://localhost/deploy-netlify-gatsby/wordpress/graphql`,
+      }
+    }
+  ],
 }
