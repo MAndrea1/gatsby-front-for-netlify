@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://localhost/deploy-netlify-gatsby/wordpress/graphql`,
+        url: `https://wordpress-host-test.000webhostapp.com/graphql`,
       }
     }
   ],
