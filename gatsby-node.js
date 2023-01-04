@@ -13,12 +13,20 @@ exports.createPages = async ({ actions, graphql }) => {
         uri
       }
     }
+    allWpPost {
+      nodes {
+        id
+        uri
+      }
+    }
   }
   `)
 
   const pages = result.data.allWpPage.nodes
+  const posts = result.data.allWpPost.nodes
 
   const pageTemplate = path.resolve(`./src/templates/page-template.js`)
+  const postTemplate = path.resolve(`./src/templates/post-template.js`)
 
   pages.forEach(page => {
     createPage({
@@ -26,6 +34,15 @@ exports.createPages = async ({ actions, graphql }) => {
       component: slash(pageTemplate),
       context: {
         id: page.id,
+      }
+    })
+  })
+  posts.forEach(post => {
+    createPage({
+      path: post.uri,
+      component: slash(postTemplate),
+      context: {
+        id: post.id,
       }
     })
   })
